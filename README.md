@@ -97,19 +97,15 @@ To run all services from PowerShell:
 
 ```powershell
 # 1. Start MongoDB
-& "C:\Program Files\MongoDB\Server\8.2\bin\mongod.exe" --dbpath "C:\Users\leela\.gemini\antigravity\scratch\transitchain\data\db" --bind_ip 127.0.0.1 --port 27017
+& "C:\Program Files\MongoDB\Server\8.2\bin\mongod.exe" --dbpath "you path"
 
 # 2. Start Python Optimization Service (Port 8000)
-cd "C:\Users\leela\.gemini\antigravity\scratch\transitchain\optimization-service"
 uvicorn app.main:app --host 127.0.0.1 --port 8000
 
 # 3. Start Node.js Backend Server (Port 5000)
-cd "C:\Users\leela\.gemini\antigravity\scratch\transitchain\backend"
-node scripts/seed.js # (Seed verified demo users & Hyderabad GTFS data)
 node server.js
 
 # 4. Start React Frontend (Port 5173)
-cd "C:\Users\leela\.gemini\antigravity\scratch\transitchain\frontend"
 npm run dev
 ```
 
