@@ -1,0 +1,12 @@
+{
+  "name": "transitchain-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "npm run start:backend",
+    "start:backend": "cd backend && npm start",
+    "start:frontend": "cd frontend && npm run dev",
+    "start:opt": "cd optimization-service && uvicorn app.main:app --host 127.0.0.1 --port 8000 --reload",
+    "make-admin": "cd backend && node scripts/makeAdmin.js"
+  }
+}

@@ -1,0 +1,291 @@
+/* ==========================================================================
+   TransitChain Enterprise NOC & Admin Dashboard Design System
+   Strict Compliance with Landing Page Design System Rules:
+   - Flat backgrounds only (#000000, #181818, #1F1F1F, #272727, #313131, #131209)
+   - Zero background gradients
+   - Complete 4-sided borders only
+   - Base motion curve cubic-bezier(0.22, 1, 0.36, 1)
+   - Strict spacing tokens & button padding (8px vertical, 12px horizontal)
+   - Manrope primary + Geist Mono for numbers & data
+   ========================================================================== */
+
+:root {
+  --admin-bg-base: #000000;
+  --admin-bg-surface: #181818;
+  --admin-bg-card: #1F1F1F;
+  --admin-bg-hover: #272727;
+  --admin-border: #313131;
+  --admin-accent-base: #131209;
+  --admin-ease-base: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* --- Container (Flat #000000 Canvas) --- */
+.admin-dashboard-container {
+  background-color: var(--admin-bg-base);
+  min-height: 100vh;
+  color: #f1f5f9;
+  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* --- Flat Surface Cards (Complete 4-sided border) --- */
+.admin-glass-card {
+  background-color: var(--admin-bg-surface);
+  border: 1px solid var(--admin-border);
+  border-radius: 16px; /* rounded-2xl */
+  position: relative;
+  transition: transform 500ms var(--admin-ease-base), border-color 300ms var(--admin-ease-base);
+}
+
+.admin-glass-card:hover {
+  border-color: #38bdf8;
+  transform: translateY(-2px);
+}
+
+/* --- KPI Metric Cards --- */
+.admin-metric-card {
+  background-color: var(--admin-bg-card);
+  border: 1px solid var(--admin-border);
+  border-radius: 12px; /* rounded-xl */
+  padding: 16px; /* spacing-200 */
+  transition: transform 500ms var(--admin-ease-base), border-color 300ms var(--admin-ease-base);
+}
+
+.admin-metric-card:hover {
+  border-color: #38bdf8;
+  background-color: var(--admin-bg-hover);
+  transform: translateY(-2px);
+}
+
+/* --- Segmented Tab Navigation --- */
+.admin-tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px; /* spacing-75 */
+  padding: 8px 12px; /* Main button padding */
+  border-radius: 10px;
+  font-size: 14px; /* text-sm */
+  line-height: 20px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: transform 300ms var(--admin-ease-base), opacity 300ms var(--admin-ease-base), background-color 300ms var(--admin-ease-base);
+  border: 1px solid transparent;
+  color: #94a3b8;
+  background-color: transparent;
+}
+
+.admin-tab-btn:hover {
+  color: #ffffff;
+  background-color: var(--admin-bg-hover);
+}
+
+.admin-tab-btn:active {
+  transform: scale(0.98);
+}
+
+.admin-tab-btn.active {
+  background-color: var(--admin-bg-hover);
+  border: 1px solid #38bdf8;
+  color: #ffffff;
+}
+
+/* --- Telemetry Pulse Indicators --- */
+@keyframes adminPulseDot {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(0.9);
+  }
+}
+
+.telemetry-beacon {
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background-color: #10b981;
+  display: inline-block;
+  animation: adminPulseDot 2s infinite var(--admin-ease-base);
+}
+
+.telemetry-beacon-amber {
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background-color: #f59e0b;
+  display: inline-block;
+  animation: adminPulseDot 2s infinite var(--admin-ease-base);
+}
+
+/* --- Autonomous MAPE-K Loop Circuit Cards --- */
+.mapek-node-card {
+  background-color: var(--admin-bg-card);
+  border: 1px solid var(--admin-border);
+  border-radius: 12px; /* rounded-xl */
+  padding: 16px; /* spacing-200 */
+  transition: transform 500ms var(--admin-ease-base), border-color 300ms var(--admin-ease-base);
+}
+
+.mapek-node-card:hover {
+  border-color: #f59e0b;
+  transform: translateY(-2px);
+}
+
+/* --- Overseas Hub & Flight Cards --- */
+.overseas-flight-card {
+  background-color: var(--admin-bg-surface);
+  border: 1px solid var(--admin-border);
+  border-radius: 14px;
+  padding: 16px; /* spacing-200 */
+  transition: transform 500ms var(--admin-ease-base), border-color 300ms var(--admin-ease-base);
+}
+
+.overseas-flight-card:hover {
+  border-color: #38bdf8;
+  transform: translateY(-2px);
+}
+
+.overseas-iata-badge {
+  font-family: 'Geist Mono', ui-monospace, monospace;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 6px;
+  background-color: #181818;
+  color: #38bdf8;
+  border: 1px solid var(--admin-border);
+}
+
+.overseas-rail-badge {
+  font-family: 'Geist Mono', ui-monospace, monospace;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 6px;
+  background-color: #181818;
+  color: #a5b4fc;
+  border: 1px solid var(--admin-border);
+}
+
+.fx-rate-pill {
+  background-color: var(--admin-bg-card);
+  border: 1px solid var(--admin-border);
+  border-radius: 8px;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: background-color 300ms var(--admin-ease-base), border-color 300ms var(--admin-ease-base);
+}
+
+.fx-rate-pill:hover {
+  background-color: var(--admin-bg-hover);
+  border-color: #38bdf8;
+}
+
+/* --- Enterprise Data Table Styling --- */
+.admin-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.admin-table thead th {
+  padding: 12px 16px;
+  color: #94a3b8;
+  font-weight: 600;
+  border-bottom: 1px solid var(--admin-border);
+  background-color: var(--admin-bg-surface);
+  text-align: left;
+}
+
+.admin-table tbody td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--admin-border);
+  transition: background-color 300ms var(--admin-ease-base);
+}
+
+.admin-table tbody tr:hover td {
+  background-color: var(--admin-bg-hover);
+}
+
+/* --- Custom Slim Flat Scrollbars --- */
+.admin-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.admin-scrollbar::-webkit-scrollbar-track {
+  background-color: var(--admin-bg-base);
+}
+
+.admin-scrollbar::-webkit-scrollbar-thumb {
+  background-color: var(--admin-border);
+  border-radius: 6px;
+}
+
+.admin-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: #475569;
+}
+
+/* --- Strict Button Tokens (Padding: 8px vertical, 12px horizontal) --- */
+.admin-btn-primary {
+  background-color: #0284c7;
+  color: #ffffff;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 14px;
+  line-height: 20px;
+  border: 1px solid #0284c7;
+  transition: transform 300ms var(--admin-ease-base), opacity 300ms var(--admin-ease-base), background-color 300ms var(--admin-ease-base);
+}
+
+.admin-btn-primary:hover {
+  background-color: #0369a1;
+  border-color: #0369a1;
+  transform: translateY(-1px);
+}
+
+.admin-btn-primary:active {
+  transform: scale(0.98);
+}
+
+.admin-btn-amber {
+  background-color: #f59e0b;
+  color: #000000;
+  font-weight: 700;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 14px;
+  line-height: 20px;
+  border: 1px solid #f59e0b;
+  transition: transform 300ms var(--admin-ease-base), opacity 300ms var(--admin-ease-base), background-color 300ms var(--admin-ease-base);
+}
+
+.admin-btn-amber:hover {
+  background-color: #d97706;
+  border-color: #d97706;
+  transform: translateY(-1px);
+}
+
+.admin-btn-amber:active {
+  transform: scale(0.98);
+}
+
+/* --- Nested Radius Formula Helper ---
+   outer rounded-2xl (16px) with 8px internal padding gives inner element 8px radius (rounded-lg)
+*/
+.nested-radius-outer {
+  border-radius: 16px;
+  padding: 8px;
+}
+
+.nested-radius-inner {
+  border-radius: 8px;
+}

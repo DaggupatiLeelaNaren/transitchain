@@ -1,0 +1,70 @@
+/* Glass UI Utility Classes */
+
+/* Base glass panel for page sections */
+.glass-panel {
+  background: rgba(30,30,30,0.45); /* semi‑transparent dark */
+  backdrop-filter: blur(12px) saturate(150%);
+  -webkit-backdrop-filter: blur(12px) saturate(150%);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 1rem; /* rounded-xl */
+  box-shadow: 0 8px 32px 0 rgba(0,0,0,0.37);
+  padding: var(--spacing-200, 1rem);
+  color: var(--color-text, #f1f5f9);
+}
+
+/* Glass card (used for cards, modals, etc.) */
+.glass-card {
+  background: rgba(25,25,25,0.55);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 0.75rem; /* rounded-lg */
+  box-shadow: 0 4px 24px 0 rgba(0,0,0,0.3);
+  padding: var(--spacing-200, 1rem);
+}
+
+/* Glass navigation bar */
+.glass-nav {
+  background: rgba(20,20,20,0.55);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  color: #f1f5f9;
+}
+
+/* Glass button – primary */
+.glass-btn-primary {
+  background: rgba(2,132,199,0.55);
+  color: #fff;
+  border: 1px solid rgba(2,132,199,0.7);
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  font-weight: 600;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: transform 200ms var(--admin-ease-base), background 200ms var(--admin-ease-base);
+}
+.glass-btn-primary:hover {
+  background: rgba(3,105,161,0.65);
+  transform: translateY(-1px);
+}
+.glass-btn-primary:active {
+  transform: scale(0.96);
+}
+
+/* Glass input fields */
+.glass-input {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 0.5rem;
+  color: #f1f5f9;
+  padding: 0.5rem 0.75rem;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  transition: border-color 200ms var(--admin-ease-base), background 200ms var(--admin-ease-base);
+}
+.glass-input:focus {
+  border-color: #38bdf8;
+  background: rgba(255,255,255,0.12);
+  outline: none;
+}
