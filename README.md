@@ -115,14 +115,6 @@ npm run dev
 
 ---
 
-## 🔑 Pre-Configured Test Accounts
-
-| Account | Email | Password | Role | Status |
-| :--- | :--- | :--- | :--- | :--- |
-| **System Administrator** | `admin@transitchain.com` | `Admin@TransitChain2026!` | `admin` | **Verified** |
-| **Test Commuter** | `user@transitchain.com` | `User@TransitChain2026!` | `user` | **Verified** |
-
----
 
 ## 🧪 Automated Test Results Summary
 
