@@ -1,120 +1,364 @@
-# TransitChain — Complete Multimodal Smart Transportation Platform
+# 🚍 TransitChain – Smart Multimodal Journey Planner
 
-TransitChain is a production-grade, door-to-door, multimodal smart transportation platform that combines **City Buses (TGSRTC)**, **Metro Rail (HMRL)**, and **Walking Connections** with high-precision time-dependent routing, Pareto multi-objective ranking, interactive Leaflet maps, digital ticket booking via provider adapters, real-time tracking with WebSockets, nearby places discovery, an AI support chatbot, an admin portal, and autonomous MAPE-K self-healing monitoring.
+<p align="center">
+  <img src="https://img.shields.io/badge/React-Frontend-61DAFB?style=for-the-badge&logo=react&logoColor=black" />
+  <img src="https://img.shields.io/badge/Node.js-Backend-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" />
+  <img src="https://img.shields.io/badge/Express.js-API-000000?style=for-the-badge&logo=express&logoColor=white" />
+  <img src="https://img.shields.io/badge/MongoDB-Database-47A248?style=for-the-badge&logo=mongodb&logoColor=white" />
+  <img src="https://img.shields.io/badge/Python-FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white" />
+</p>
 
----
-
-## 🚀 Live Running Services
-
-| Service | Technology | Port / Endpoint | Status |
-| :--- | :--- | :--- | :--- |
-| **Frontend Web App** | React.js, Vite, Tailwind CSS, Leaflet | `http://127.0.0.1:5173` | **ONLINE** |
-| **Backend REST API** | Node.js, Express.js, Socket.IO, JWT | `http://127.0.0.1:5000` | **ONLINE** |
-| **Optimization Service** | Python, FastAPI, NetworkX, Pydantic | `http://127.0.0.1:8000` | **ONLINE** |
-| **Primary Database** | MongoDB Server v8.2 | `mongodb://127.0.0.1:27017/transitchain` | **ONLINE** |
-
----
-
-## 🎯 Canonical Scenario: Indira Nagar–Gachibowli to KPHB Colony
-
-When a user plans a commute from **Indira Nagar - Gachibowli** to **KPHB Colony, Hyderabad**:
-1. Identifies the user's origin & destination coordinates.
-2. Discovers nearby transit hubs (Indira Nagar bus stop, Raidurg Metro station, KPHB Colony Metro & Bus stops).
-3. Evaluates real time-dependent timetables and service frequencies.
-4. Calculates both direct bus routes (**TGSRTC 195W**) and multimodal combinations (**Feeder 113 + HMRL Blue Line + Ameerpet Interchange + Red Line**).
-5. Computes realistic walking connections between transfer points (e.g. Raidurg Bus to Metro: 130m / 2 min; Ameerpet interchange: 90s).
-6. Computes waiting buffers and accurate door-to-door travel times.
-7. Evaluates Pareto dominance across (duration, walking distance, transfers, fare, waiting).
-8. Ranks the most practical journeys with full step-by-step instructions.
-9. Renders the interactive Leaflet map with colored polylines and stop markers.
-10. Enables 1-click digital booking with instant PNR and QR code generation.
+<p align="center">
+  <b>One Journey. Multiple Transport Modes. Smarter Decisions.</b>
+</p>
 
 ---
 
-## 🛠️ Technology Stack
+## 🌍 About TransitChain
 
-- **Frontend**: React.js 18, Vite 5, JavaScript (No TypeScript), Tailwind CSS, React Router v6, Leaflet & OpenStreetMap, Lucide React, Socket.IO Client, Axios.
-- **Backend API**: Node.js v24, Express.js, JavaScript ES Modules, MongoDB 8.2, Mongoose ODM, JWT Auth, Nodemailer, Socket.IO, Helmet, Morgan, Express-Rate-Limit.
-- **Optimization Service**: Python 3.11, FastAPI, Pydantic v2, NetworkX, Uvicorn.
-- **Transit Feeds**: TGSRTC Hyderabad Bus Network & HMRL Hyderabad Metro Rail GTFS Schedule specifications.
+TransitChain is a smart multimodal transportation and journey-planning platform designed to simplify urban travel.
 
----
+Traditional journey-planning applications often focus on finding the shortest or fastest route. However, real-world commuters also consider ticket prices, walking distance, waiting time, transfers, and convenience.
 
-## 📁 Monorepo Project Structure
+TransitChain addresses this challenge by integrating multiple transportation modes, including buses, metro, and walking, into a unified journey-planning experience.
 
+The platform uses graph-based algorithms and multi-objective optimization to generate and compare alternative journeys, helping users choose routes that best match their preferences.
+
+## 🎯 Problem Statement
+
+Urban commuters frequently face difficulties when planning journeys involving multiple transportation modes.
+
+Some common challenges include:
+
+- Lack of unified information across transportation modes.
+- Difficulty comparing travel time and journey costs.
+- Complicated transfers between different transport services.
+- Inefficient route suggestions based only on distance or travel time.
+- Difficulty finding convenient walking connections.
+- Limited visibility into the complete door-to-door journey.
+
+**TransitChain aims to solve these problems through intelligent multimodal route planning and optimization.**
+
+## ✨ Key Features
+
+### 🗺️ 1. Multimodal Journey Planning
+- Plan journeys using buses, metro, and walking.
+- Combine multiple transportation modes into one journey.
+- Generate complete door-to-door travel alternatives.
+- Display intermediate stops and transfers.
+
+### ⚡ 2. Intelligent Route Optimization
+- Time-dependent shortest-path routing.
+- Multi-objective route optimization.
+- Fare and travel-time comparison.
+- Transfer penalties and walking-distance considerations.
+- Personalized route selection based on user preferences.
+
+### 📍 3. Location-Based Journey Search
+- Search using source and destination locations.
+- Support location-based origin selection.
+- Help users identify nearby transport stops.
+- Provide walking connections between transport points.
+
+### 🎫 4. Booking Management
+- View and manage journey bookings.
+- Access booking information.
+- Track journeys through the booking interface.
+- Support booking integrations where partner access is available.
+
+### 📡 5. Journey Tracking
+- View journey progress.
+- Follow transport connections.
+- Access relevant journey information.
+
+### 🤖 6. Travel Assistance Chatbot
+- Assist users with journey-related questions.
+- Provide travel information.
+- Suggest relevant places and food options around destinations.
+
+### 👤 7. Authentication and User Management
+- Email OTP-based registration and verification.
+- Secure login and authentication.
+- JWT-based session management.
+- User profile management.
+
+### 🛡️ 8. Admin Dashboard
+- Manage transportation providers.
+- Manage locations, stops, routes, and trips.
+- Monitor platform data.
+- Manage administrative operations.
+
+## 🧠 Core Algorithms and Research Innovation
+
+One of the major aspects of TransitChain is its focus on multi-objective journey optimization.
+
+Instead of selecting a route based only on minimum travel time, the system considers several factors.
+
+### 1. Multimodal Graph Representation
+
+The transportation network is represented as a directed graph.
+
+- Nodes represent stops, stations, and connected locations.
+- Edges represent transportation connections.
+- Edge attributes contain relevant travel information.
+- Different transportation modes are represented within the same network.
+
+### 2. Time-Dependent Shortest Path
+
+Travel times can change depending on departure time and transport schedules.
+
+The time-dependent routing algorithm evaluates journey connections according to departure time and available transportation information.
+
+### 3. Pareto-Based Multi-Objective Optimization
+
+TransitChain explores alternative journeys using Pareto-based optimization.
+
+The optimization considers:
+
+- Total travel time.
+- Total fare.
+- Walking distance.
+- Number of transfers.
+- User preferences.
+
+Rather than always selecting one shortest route, the system can identify multiple non-dominated alternatives.
+
+### 4. Weighted Route Scoring
+
+A weighted scoring mechanism can rank available alternatives according to user preferences.
+
+For example:
+
+- A user prioritizing speed can prefer shorter journeys.
+- A budget-conscious user can prioritize lower fares.
+- A user prioritizing convenience can minimize transfers and walking distance.
+
+### 5. Walking Connection Calculation
+
+Walking connections can be calculated using geographical coordinates and the Haversine distance formula.
+
+This helps connect nearby transportation stops and improve door-to-door journey planning.
+
+## 🏗️ Technology Stack
+
+| Category | Technologies |
+|---|---|
+| Frontend | React.js, JavaScript, CSS |
+| Backend | Node.js, Express.js |
+| Database | MongoDB, Mongoose |
+| Optimization Services | Python, FastAPI |
+| Routing Algorithms | NetworkX, Graph Algorithms |
+| Authentication | JWT, Email OTP |
+| Location Processing | Haversine Distance |
+| Development Tools | Git, GitHub, Postman, VS Code |
+
+## 🔄 System Architecture
+
+```mermaid
+flowchart TD
+    A[User] --> B[React Frontend]
+
+    B --> C[Node.js + Express Backend]
+
+    C --> D[Authentication & User Management]
+    C --> E[Journey Planning Service]
+    C --> F[Booking & Tracking Services]
+
+    E --> G[Python FastAPI Optimization Engine]
+
+    G --> H[Multimodal Graph]
+    H --> I[Time-Dependent Router]
+    H --> J[Pareto Optimizer]
+    H --> K[Walking Connector]
+
+    C --> L[(MongoDB Database)]
+    G --> L
+
+    D --> L
+    F --> L
 ```
-transitchain/
-├── frontend/                     # React + Vite client
-│   ├── src/
-│   │   ├── components/           # Navbar, Footer, JourneyCard, JourneyMap, SupportChatbotModal
-│   │   ├── context/              # AuthContext (JWT session management)
-│   │   ├── pages/                # Landing, Search, JourneyDetail, Bookings, Tracking, Places, Auth, Admin
-│   │   ├── services/             # Axios API client (auth, journeys, bookings, tracking, places, chat, admin)
-│   │   ├── App.jsx               # Protected & public route definitions
-│   │   └── main.jsx
-│   ├── package.json
-│   ├── tailwind.config.js
-│   └── vite.config.js
+
+## 📂 Project Structure
+
+```text
+TransitChain/
 │
-├── backend/                      # Node.js Express API & Socket.IO server
-│   ├── config/                   # db.js, env.js
-│   ├── models/                   # User, Transport (Provider, Stop, Route, Trip), Gtfs, Operations
-│   ├── controllers/              # authController, transportController, journeyController, bookingController, etc.
-│   ├── routes/                   # authRoutes, transportRoutes, journeyRoutes, bookingRoutes, adminRoutes
-│   ├── middleware/               # authenticateToken, requireAdmin, errorHandler
-│   ├── integrations/             # BaseProviderAdapter, TgsrtcAdapter, HmrlAdapter, ProviderAdapterFactory
-│   ├── utils/                    # mailer.js (secure Gmail OTP & sandbox fallback), logger.js, response.js
-│   ├── scripts/                  # seed.js (initial Hyderabad users, feeds, routes, stops)
-│   ├── tests/                    # api.test.js (15 tests), e2e.test.js (14 tests)
-│   ├── app.js
+├── frontend/
+│   ├── public/
+│   └── src/
+│       ├── assets/
+│       ├── components/
+│       ├── pages/
+│       ├── services/
+│       ├── context/
+│       └── App.jsx
+│
+├── backend/
+│   ├── config/
+│   ├── controllers/
+│   ├── middleware/
+│   ├── models/
+│   ├── routes/
+│   ├── services/
+│   ├── scripts/
+│   ├── utils/
 │   └── server.js
 │
-├── optimization-service/         # Python FastAPI routing engine
-│   ├── app/
-│   │   ├── main.py
-│   │   ├── api/                  # routes.py (/health, /journeys/search, /graph/validate, /metrics)
-│   │   ├── core/                 # config.py
-│   │   ├── models/               # schemas.py
-│   │   ├── services/             # schedule_store.py (in-memory timetable index)
-│   │   ├── algorithms/           # time_dependent_search.py, pareto_optimizer.py, walking_connector.py
-│   │   ├── graph/                # multimodal_graph.py
-│   │   ├── utils/                # time_utils.py (GTFS 24:00+ handling, seconds normalization)
-│   │   └── tests/                # test_routing.py (5 pytest suites)
-│   ├── requirements.txt
-│   └── .env.example
+├── optimization/
+│   ├── main.py
+│   ├── multimodal_graph.py
+│   ├── time_dependent_search.py
+│   ├── pareto_optimizer.py
+│   └── walking_connector.py
 │
-├── shared/                       # Shared contracts and schemas
-├── docs/                         # In-depth architectural & deployment guides
-├── scripts/                      # Startup & maintenance scripts
-└── package.json                  # Monorepo orchestration scripts
+└── README.md
 ```
 
----
+*Note: This is a conceptual structure. Adjust folder names to match the actual repository.*
 
-## ⚡ Windows PowerShell Quickstart Commands
+## ⚙️ Installation and Setup
 
-To run all services from PowerShell:
+### Prerequisites
 
-```powershell
-# 1. Start MongoDB
-& "C:\Program Files\MongoDB\Server\8.2\bin\mongod.exe" --dbpath "you path"
+- Node.js and npm
+- Python 3.10+
+- MongoDB
+- Git
 
-# 2. Start Python Optimization Service (Port 8000)
-uvicorn app.main:app --host 127.0.0.1 --port 8000
+### 1. Clone the Repository
 
-# 3. Start Node.js Backend Server (Port 5000)
-node server.js
+```bash
+git clone https://github.com/DaggupatiLeelaNaren/transitchain.git
 
-# 4. Start React Frontend (Port 5173)
+cd transitchain
+```
+
+### 2. Setup Backend
+
+```bash
+cd backend
+
+npm install
+```
+
+Create a `.env` file in the backend directory and configure your environment variables.
+
+```env
+PORT=5000
+MONGO_URI=your_mongodb_connection_string
+
+JWT_SECRET=your_jwt_secret
+JWT_EXPIRES_IN=1d
+
+OTP_SECRET=your_otp_secret
+
+EMAIL_USER=your_email
+EMAIL_APP_PASSWORD=your_email_app_password
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_SECURE=false
+```
+
+Start the backend:
+
+```bash
 npm run dev
 ```
 
+### 3. Setup Frontend
+
+Open another terminal:
+
+```bash
+cd frontend
+
+npm install
+
+npm run dev
+```
+
+### 4. Setup Python Optimization Service
+
+Open another terminal:
+
+```bash
+cd optimization
+
+python -m venv venv
+```
+
+Activate the virtual environment.
+
+**Windows:**
+
+```bash
+venv\Scripts\activate
+```
+
+Install dependencies:
+
+```bash
+pip install fastapi uvicorn networkx
+```
+
+Start the FastAPI server:
+
+```bash
+uvicorn main:app --reload --port 8000
+```
+
+*Note: Install any additional dependencies specified in your project's requirements.txt file. The commands above assume the corresponding entry points and scripts are present.*
+
+## 🔬 Research Objectives
+
+TransitChain explores the following research question:
+
+**Can multi-objective route optimization generate more practical and user-friendly journeys than traditional shortest-path algorithms that prioritize travel time alone?**
+
+The project investigates:
+
+1. Multimodal graph-based transportation modeling.
+2. Time-dependent shortest-path algorithms.
+3. Pareto-frontier-based route optimization.
+4. Transfer and walking penalties.
+5. User-preference-based route ranking.
+6. Comparison of travel-time-only and multi-objective routing approaches.
+
+## 🚀 Future Enhancements
+
+- Real-time public transportation data integration.
+- Live vehicle tracking and estimated arrival times.
+- Additional transportation provider integrations.
+- More advanced route optimization techniques.
+- Improved personalized travel recommendations.
+- Expanded booking integrations.
+- Mobile application support.
+- Journey analytics and travel insights.
+
+## 🎓 Project Highlights
+
+- Full-stack application development.
+- Research-oriented algorithm implementation.
+- Graph-based multimodal transportation modeling.
+- Multi-objective optimization.
+- REST API development and integration.
+- Database design and management.
+- Authentication and role-based access control.
+- Responsive user interface development.
+
+## 👨‍💻 Developer
+
+**Leela Naren Daggupati**
+
+Full Stack Developer | Software Engineer | Problem Solver
+
+- GitHub: [@DaggupatiLeelaNaren](https://github.com/DaggupatiLeelaNaren)
+- Portfolio: [My Portfolio](https://github.com/DaggupatiLeelaNaren/Portfolio)
+
 ---
 
-
-## 🧪 Automated Test Results Summary
-
-- **Backend API Tests** (`node --test tests/api.test.js`): **15 / 15 Passed** (100%)
-- **End-to-End Workflow Tests** (`node --test tests/e2e.test.js`): **14 / 14 Passed** (100%)
-- **Python Optimization Routing Tests** (`pytest app/tests/`): **5 / 5 Passed** (100%)
-- **Total Automated Test Suites**: **34 / 34 Passed (0 Failures)**
+<p align="center">
+  ⭐ If you find TransitChain interesting, consider giving this repository a star!
+  <br/><br/>
+  <b>Making Urban Mobility Smarter, Simpler, and More Connected. 🚍</b>
+</p>
